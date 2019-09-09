@@ -2,8 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/main.js', // dev
-  // entry: './src/lib/index.js', // npm
+  // entry: './src/main.js', // dev
+  entry: './src/lib/index.js', // npm
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: 'dist/',
@@ -62,7 +62,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        exclude: /node_modules/
+        // exclude: /node_modules/
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

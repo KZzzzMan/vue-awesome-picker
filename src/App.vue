@@ -11,6 +11,7 @@
       :textTitle="picker0.textTitle"
       :data="picker0.data"
       :anchor="picker0.anchor"
+      :interceptor="sets"
       @confirm="handlePicker0Confirm">
     </awesome-picker>
 
@@ -132,6 +133,11 @@ export default {
     handlePicker1Confirm (v) {
       this.picker1.anchor = v
       this.value = v ? JSON.stringify(v) : null
+    },
+
+    sets(val){
+      console.log(val);
+      return false;
     },
 
     showPicker2 () {
