@@ -1,12 +1,12 @@
 {
   "_args": [
     [
-      "vue-awesome-picker@1.1.0",
+      "vue-awesome-picker@1.1.7",
       "D:\\activity"
     ]
   ],
-  "_from": "vue-awesome-picker@1.1.0",
-  "_id": "vue-awesome-picker@1.1.0",
+  "_from": "vue-awesome-picker@1.1.7",
+  "_id": "vue-awesome-picker@1.1.7",
   "_inBundle": false,
   "_integrity": "sha512-JC1dIMxcqE0vLzr/QeCKArHkDyKFAqfKz4g0bpYANToXWhF4J8xhXAffGseayGw4fymF/LCvtxI50F4L/s5yQA==",
   "_location": "/vue-awesome-picker",
@@ -14,18 +14,18 @@
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "vue-awesome-picker@1.1.0",
+    "raw": "vue-awesome-picker@1.1.7",
     "name": "vue-awesome-picker",
     "escapedName": "vue-awesome-picker",
-    "rawSpec": "1.1.0",
+    "rawSpec": "1.1.7",
     "saveSpec": null,
-    "fetchSpec": "1.1.0"
+    "fetchSpec": "1.1.7"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/vue-awesome-picker/-/vue-awesome-picker-1.1.0.tgz",
-  "_spec": "1.1.0",
+  "_resolved": "https://registry.npmjs.org/vue-awesome-picker/-/vue-awesome-picker-1.1.7.tgz",
+  "_spec": "1.1.7",
   "_where": "D:\\activity",
   "author": {
     "name": "Fyerl",
@@ -86,8 +86,8 @@
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --host 0.0.0.0",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot --host 192.168.123.205",
     "lint": "eslint --ext .js,.vue src"
   },
-  "version": "1.1.5"
+  "version": "1.1.7"
 }

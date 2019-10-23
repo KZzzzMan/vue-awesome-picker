@@ -1,40 +1,37 @@
 <template>
     <div>
-        <transition name="fade">
-            <div class="mask"
-                 v-show="display"
-                 @click="hide"></div>
-        </transition>
-        <transition name="slide">
-            <div class="picker"
-                 v-show="display">
-                <div class="picker-title">
-                    <span class="pt-cancel"
-                          @click="cancel"
-                          :style="{ color: colorCancel }">{{textCancel}}</span>
-                    <span class="pt-submit"
-                          @click="confirm"
-                          :style="{ color: colorConfirm }">{{textConfirm}}</span>
-                    <h4 :style="{ color: colorTitle }">{{textTitle}}</h4>
-                </div>
-                <div class="picker-panel">
-                    <div class="picker-mask-top"></div>
-                    <div class="picker-mask-bottom"></div>
-                    <div class="picker-wheel-wrapper"
-                         ref="wheelWrapper">
-                        <div class="picker-wheel"
-                             v-for="(wheel, index) in pickerData"
-                             :key="index">
-                            <ul class="wheel-scroll">
-                                <li class="wheel-item"
-                                    v-for="(item, index) in wheel"
-                                    :key="index">{{item}}</li>
-                            </ul>
-                        </div>
+        <div class="mask"
+             v-show="display"
+             @click="hide"></div>
+        <div class="picker"
+             v-show="display">
+            <div class="picker-title">
+                <span class="pt-cancel"
+                      @click="cancel"
+                      :style="{ color: colorCancel }">{{textCancel}}</span>
+                <span class="pt-submit"
+                      @click="confirm"
+                      :style="{ color: colorConfirm }">{{textConfirm}}</span>
+                <h4 :style="{ color: colorTitle }">{{textTitle}}</h4>
+            </div>
+            <div class="picker-panel">
+                <div class="picker-mask-top"></div>
+                <div class="picker-mask-bottom"></div>
+                <div class="picker-wheel-wrapper"
+                     ref="wheelWrapper">
+                    <div class="picker-wheel"
+                         v-for="(wheel, index) in pickerData"
+                         :key="index">
+                        <ul class="wheel-scroll">
+                            <li class="wheel-item"
+                                v-for="(item, index) in wheel"
+                                :key="index">{{item}}</li>
+                        </ul>
                     </div>
                 </div>
+                     <div style="display:none">{{pickerData}}</div>
             </div>
-        </transition>
+        </div>
     </div>
 </template>
 
@@ -299,7 +296,7 @@
                             ? (this.pickerAnchor[i] < data.length ? this.pickerAnchor[i] || 0 : 0)
                             : this._reloadWheel(i, wheelData)
                     }
-                    data = data.length ? data[this.pickerAnchor[i]].children : null
+                    data = data.length ? data[this.pickerAnchor[i] || 0].children : null
                     i++
                 }
                 this.pickerData = this.pickerData.slice(0, i)
