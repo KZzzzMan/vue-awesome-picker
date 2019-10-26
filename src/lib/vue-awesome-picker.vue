@@ -1,37 +1,41 @@
 <template>
     <div>
-        <div class="mask"
-             v-show="display"
-             @click="hide"></div>
-        <div class="picker"
-             v-show="display">
-            <div class="picker-title">
-                <span class="pt-cancel"
-                      @click="cancel"
-                      :style="{ color: colorCancel }">{{textCancel}}</span>
-                <span class="pt-submit"
-                      @click="confirm"
-                      :style="{ color: colorConfirm }">{{textConfirm}}</span>
-                <h4 :style="{ color: colorTitle }">{{textTitle}}</h4>
-            </div>
-            <div class="picker-panel">
-                <div class="picker-mask-top"></div>
-                <div class="picker-mask-bottom"></div>
-                <div class="picker-wheel-wrapper"
-                     ref="wheelWrapper">
-                    <div class="picker-wheel"
-                         v-for="(wheel, index) in pickerData"
-                         :key="index">
-                        <ul class="wheel-scroll">
-                            <li class="wheel-item"
-                                v-for="(item, index) in wheel"
-                                :key="index">{{item}}</li>
-                        </ul>
-                    </div>
+        <transition name="fade">
+            <div class="mask"
+                 v-show="display"
+                 @click="hide"></div>
+        </transition>
+        <transition name="slide">
+            <div class="picker"
+                 v-show="display">
+                <div class="picker-title">
+                    <span class="pt-cancel"
+                          @click="cancel"
+                          :style="{ color: colorCancel }">{{textCancel}}</span>
+                    <span class="pt-submit"
+                          @click="confirm"
+                          :style="{ color: colorConfirm }">{{textConfirm}}</span>
+                    <h4 :style="{ color: colorTitle }">{{textTitle}}</h4>
                 </div>
-                     <div style="display:none">{{pickerData}}</div>
+                <div class="picker-panel">
+                    <div class="picker-mask-top"></div>
+                    <div class="picker-mask-bottom"></div>
+                    <div class="picker-wheel-wrapper"
+                         ref="wheelWrapper">
+                        <div class="picker-wheel"
+                             v-for="(wheel, index) in pickerData"
+                             :key="index">
+                            <ul class="wheel-scroll">
+                                <li class="wheel-item"
+                                    v-for="(item, index) in wheel"
+                                    :key="index">{{item}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="display:none">{{pickerData}}</div>
+                </div>
             </div>
-        </div>
+        </transition>
     </div>
 </template>
 
@@ -177,14 +181,15 @@
                     }
                     return index
                 })
+                console.log('anchor', [...anchor]);
                 return [...anchor]
             },
 
             show() {
                 this.display = true
                 if (!this.wheels.length || this.dataChange) {
-                    this.dataType === DATA_CASCADE && this._updatePickerData()
                     this.$nextTick(() => {
+                        this.dataType === DATA_CASCADE && this._updatePickerData()
                         const wheelWrapper = this.$refs.wheelWrapper
                         this.pickerData.forEach((item, index) => {
                             this._createWheel(wheelWrapper, index).enable()
@@ -218,6 +223,7 @@
                         swipeTime: this.swipeTime
                     })
                     wheel.on('scrollEnd', () => {
+                        console.log('scrollEnd');
                         this._cascadePickerChange(i)
                     })
                 } else {
