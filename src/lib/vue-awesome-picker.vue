@@ -190,11 +190,13 @@
                 if (!this.wheels.length || this.dataChange) {
                     this.$nextTick(() => {
                         this.dataType === DATA_CASCADE && this._updatePickerData()
-                        const wheelWrapper = this.$refs.wheelWrapper
-                        this.pickerData.forEach((item, index) => {
-                            this._createWheel(wheelWrapper, index).enable()
-                        })
-                        this._wheelToAnchor(this.proxyAnchor)
+                        setTimeout(() => {
+                            const wheelWrapper = this.$refs.wheelWrapper
+                            this.pickerData.forEach((item, index) => {
+                                this._createWheel(wheelWrapper, index).enable()
+                            })
+                            this._wheelToAnchor(this.proxyAnchor)
+                        }, 50)
 
                         this.dataChange && this._destroyExtraWheels()
                         this.dataChange = false
@@ -223,7 +225,6 @@
                         swipeTime: this.swipeTime
                     })
                     wheel.on('scrollEnd', () => {
-                        console.log('scrollEnd');
                         this._cascadePickerChange(i)
                     })
                 } else {
