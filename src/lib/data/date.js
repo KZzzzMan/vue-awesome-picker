@@ -1,7 +1,7 @@
 import range from './range'
 
 const START_YEAR = 2000
-const END_YEAR = 2019
+const END_YEAR = 2020
 
 const UNIT_YEAR = '年'
 const UNIT_MONTH = '月'
