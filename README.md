@@ -61,6 +61,11 @@ methods: {
 | colorTitle | title 颜色 || String | #000000
 | colorConfirm | confirm 颜色 || String | #42b983
 | colorCancel | cancel 颜色 || String | #999999
+| propLabelKeys | 展示文案键 || String | value
+| interceptor | 拦截器 || Function | return true
+
+### 返回新增 current 字段
+
 | swipeTime | 滚动速度([better-scroll swipeTime](https://ustbhuangyi.github.io/better-scroll/doc/zh-hans/options.html#swipetime)) | | Number | 1800
 
 ### data
