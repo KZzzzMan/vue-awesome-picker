@@ -32,7 +32,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div style="display:none">{{pickerData}}</div>
+                    <div style="display:none;">{{pickerData}}</div>
                 </div>
             </div>
         </transition>
@@ -80,6 +80,10 @@
             type: {
                 type: String,
                 default: TYPE_NORMAL
+            },
+            propLabelKeys:{
+                type: String,
+                default: 'value'
             },
             textTitle: {
                 type: String,
@@ -173,9 +177,9 @@
                     let index = 0
                     if (item.index) {
                         index = item.index
-                    } else if (item.value) {
-                        index = this.pickerData && this.pickerData[i] && this.pickerData[i].indexOf(item.value) > -1
-                            ? this.pickerData[i].indexOf(item.value) : 0
+                    } else if (item[this.propLabelKeys]) {
+                        index = this.pickerData && this.pickerData[i] && this.pickerData[i].indexOf(item[this.propLabelKeys]) > -1
+                            ? this.pickerData[i].indexOf(item[this.propLabelKeys]) : 0
                     } else {
                         index = item
                     }
@@ -256,7 +260,8 @@
                     const j = wheel.getSelectedIndex()
                     value.push({
                         index: j,
-                        value: this.pickerData[i][j]
+                        value: this.pickerData[i][j],
+                        current: this.data.find((item)=>{ return item[this.propLabelKeys] ==  this.pickerData[i][j]})
                     })
                 })
                 return value
@@ -296,7 +301,7 @@
                     if (i >= wheelIndex) {
                         let wheelData = []
                         data.forEach((item) => {
-                            wheelData.push(item.value)
+                            wheelData.push(item[this.propLabelKeys])
                         })
                         this.pickerData[i] = wheelData
                         this.pickerAnchor[i] = wheelIndex === 0
